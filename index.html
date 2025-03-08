@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
+    <title>Naibouh - Game Developer</title>
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-bg: #f4f4f4;
+            --text-color: #333;
+            --white: #fff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            overflow: hidden;
+            background: linear-gradient(135deg, #e0f7fa, #c2e9f6);
+            color: var(--text-color);
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 1rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 2rem;
             text-align: center;
         }
 
         header h1 {
             margin: 0;
+            font-size: 2.5rem;
         }
 
         section {
@@ -30,25 +41,30 @@
         }
 
         section h2 {
-            color: #333;
-            margin-bottom: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-content: center;
         }
 
         .card {
-            background: #f4f4f4;
+            background: var(--light-bg);
             padding: 1.5rem;
-            margin: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .card img {
@@ -61,6 +77,7 @@
 
         .card h3 {
             margin: 0 0 0.5rem 0;
+            color: var(--secondary-color);
         }
 
         .card p {
@@ -68,36 +85,41 @@
         }
 
         .btn {
+            display: inline-block;
             margin-top: 1rem;
-            padding: 0.7rem 1.2rem;
-            color: white;
-            background-color: #333;
+            padding: 0.8rem 1.5rem;
+            color: var(--white);
+            background-color: var(--primary-color);
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
             font-size: 1rem;
-            display: inline-block;
+            transition: background-color 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #555;
+            background-color: #2980b9;
         }
 
         footer {
             text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
             width: 100%;
         }
 
-        @media (min-width: 768px) {
-            .container {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1rem;
             }
         }
     </style>
@@ -108,7 +130,7 @@
     </header>
     <section>
         <h2>About Me</h2>
-        <p>Hello! I’m a passionate developer skilled in HTML, CSS, JavaScript, PHP, and SQL. I create engaging games and applications, including my latest game on the Play Store: <strong>Circle</strong>.</p>
+        <p>Hello! I’m a passionate developer skilled in HTML, CSS, JavaScript, PHP, and SQL. I create engaging games and applications.</p>
     </section>
     <section>
         <h2>My Work</h2>
@@ -130,6 +152,12 @@
                 <h3>Colormemo - Memory Game</h3>
                 <p>Test your memory and reflexes in this classic Simon game!</p>
                 <a href="https://play.google.com/store/apps/details?id=com.malibu.colormemo" target="_blank" class="btn">View on Play Store</a>
+            </div>
+            <div class="card">
+                <img src="ic_launcher_aerostrike.png" alt="AeroStrike Logo">
+                <h3>AeroStrike - Air Battle</h3>
+                <p>Take control of a fighter plane, dodge enemy fire, and defeat powerful bosses in this action-packed shoot 'em up!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.malibu.aerostrike" target="_blank" class="btn">View on Play Store</a>
             </div>
         </div>
     </section>
