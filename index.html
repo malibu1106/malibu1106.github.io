@@ -3,185 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naibouh - Game Developer</title>
+    <title>Naibouh | Game Developer</title>
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --light-bg: #f4f4f4;
-            --text-color: #333;
-            --white: #fff;
+            --primary: #3498db;
+            --accent: #2ecc71;
+            --dark: #1a2a3a;
+            --light: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* outline: 1px solid red; */
         }
 
-        html, body {
-            overflow-x: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e0f7fa, #c2e9f6);
-            color: var(--text-color);
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: radial-gradient(circle at top right, #e0f7fa, #c2e9f6);
+            background-attachment: fixed;
+            color: var(--dark);
+            line-height: 1.6;
         }
 
+        /* --- Header --- */
         header {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            padding: 4rem 1rem;
             text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 2rem;
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
         }
 
+        header p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        /* --- Sections --- */
         section {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 4rem 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .about-text {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* --- Grid & Cards --- */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
         }
 
         .card {
-            background: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
-            max-width: 300px;
-            width: 100%;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
         }
 
         .card img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 22%;
+            margin: 0 auto 1.5rem;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .card h3 {
-            margin: 0 0 0.5rem 0;
-            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
         }
 
         .card p {
-            margin: 0;
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
+        /* --- Button --- */
         .btn {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            color: var(--white);
-            background-color: var(--primary-color);
-            border: none;
-            border-radius: 8px;
+            padding: 0.8rem 1.4rem;
+            background: var(--primary);
+            color: white;
             text-decoration: none;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         .btn:hover {
-            background-color: #2980b9;
+            background: #2980b9;
+            transform: scale(1.05);
         }
 
+        /* --- Footer --- */
         footer {
+            margin-top: 5rem;
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 1rem;
             text-align: center;
-            padding: 1.5rem;
-            background-color: var(--secondary-color);
-            color: var(--white);
-            width: 100%;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
-            }
+        .card { animation: fadeIn 0.6s ease backwards; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.2s; }
+        .card:nth-child(4) { animation-delay: 0.3s; }
 
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Naibouh - Game Developer</h1>
+        <h1>Naibouh</h1>
+        <p>Independent Game Developer</p>
     </header>
-    <section>
+
+    <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I’m a passionate developer skilled in HTML, CSS, JavaScript, PHP, and SQL. I create engaging games and applications.</p>
+        <p class="about-text">
+            Passionate about mobile game and app development, 
+            I focus on turning complex mechanics into smooth and engaging user experiences. 
+            Specialized in <strong>Godot Engine</strong> and modern web technologies.
+        </p>
     </section>
-    <section>
+
+    <section id="work">
         <h2>My Work</h2>
         <div class="container">
             <div class="card">
+                <img src="ic_launcher_spin_and_pay.png" alt="Spin & Pay Logo">
+                <div class="card-content">
+                    <h3>Spin & Pay - Pro Croupier</h3>
+                    <p>The ultimate training tool for professional dealers. Master the roulette table with real-world scenarios.</p>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.naibouh.spin_and_pay_ads" target="_blank" class="btn">View on Play Store</a>
+            </div>
+
+            <div class="card">
                 <img src="ic_launcher.png" alt="Circle Game Logo">
-                <h3>Circle - Puzzle Game</h3>
-                <p>A challenging puzzle game that will test your logic and strategy skills.</p>
+                <div class="card-content">
+                    <h3>Circle - Puzzle</h3>
+                    <p>A minimalist and challenging puzzle game designed to put your logic and strategy to the test.</p>
+                </div>
                 <a href="https://play.google.com/store/apps/details?id=com.malibu.circle" target="_blank" class="btn">View on Play Store</a>
             </div>
+
             <div class="card">
-                <img src="ic_launcher_fifteen.png" alt="Fifteen Game Logo">
-                <h3>Fifteen - Puzzle Game</h3>
-                <p>Slide the numbered tiles to restore the original order in this classic Fifteen Puzzle game!</p>
-                <a href="https://play.google.com/store/apps/details?id=com.malibu.fifteen" target="_blank" class="btn">View on Play Store</a>
-            </div>
-            <div class="card">
-                <img src="ic_launcher_colormemo.png" alt="Circle Game Logo">
-                <h3>Colormemo - Memory Game</h3>
-                <p>Test your memory and reflexes in this classic Simon game!</p>
+                <img src="ic_launcher_colormemo.png" alt="Color Memo Logo">
+                <div class="card-content">
+                    <h3>Colormemo</h3>
+                    <p>Test your memory and reflexes in this carefully crafted take on a classic arcade challenge.</p>
+                </div>
                 <a href="https://play.google.com/store/apps/details?id=com.malibu.colormemo" target="_blank" class="btn">View on Play Store</a>
             </div>
+
             <div class="card">
-                <img src="ic_launcher_aerostrike.png" alt="AeroStrike Logo">
-                <h3>AeroStrike - Air Battle</h3>
-                <p>Take control of a fighter plane, dodge enemy fire, and defeat powerful bosses in this action-packed shoot 'em up!</p>
-                <a href="https://play.google.com/store/apps/details?id=com.malibu.aerostrike" target="_blank" class="btn">View on Play Store</a>
+                <img src="ic_launcher_fifteen.png" alt="Fifteen Game Logo">
+                <div class="card-content">
+                    <h3>Fifteen Puzzle</h3>
+                    <p>The classic sliding tile puzzle, reimagined for a smooth and modern mobile experience.</p>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.malibu.fifteen" target="_blank" class="btn">View on Play Store</a>
             </div>
         </div>
     </section>
+
     <footer>
-        <p>© 2025 Naibouh | All rights reserved</p>
+        <p>© 2026 Naibouh | Built with passion for gaming.</p>
     </footer>
+
 </body>
 </html>
